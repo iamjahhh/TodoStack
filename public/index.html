@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="styles/index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>TodoStack</title>
+</head>
+
+<body>
+    <h1 id="mainText">Login</h1>
+
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Login</button>
+        <button id="registerButton" type="button">Register</button>
+    </form>
+
+    <form id="registerForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="password2">Password Verify:</label>
+        <input type="password" id="password2" name="passwordVerify" required>
+
+        <button type="submit">Register</button>
+        <button id="loginButton" type="button">Login</button>
+    </form>
+
+    <p id="responseMessage"></p>
+
+    <script src="src/index.js"></script>
+</body>
+
+</html>

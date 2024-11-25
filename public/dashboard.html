@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <meta charset="UTF-8">
+
+    <title>TodoStack</title>
+</head>
+
+<body>
+    <div class="menu-bar">
+        <div class="menu-left">
+            <a id="home" href="#"><i class="fas fa-home"></i></a>
+            <a href="#tasks"><i class="fas fa-tasks"></i></a>
+        </div>
+        <div class="menu-right">
+            <a href="#settings" id="settings-link"><i class="fas fa-cogs"></i></a>
+            <!-- <a href="#mode" id="mode" ><i class="fa-solid fa-moon"></i></a> -->
+            <a href="#" id="logout-link"><i class="fas fa-right-from-bracket"></i></a> 
+            <div class="profile">
+                <span class="user-name">John Doe</span> 
+                <img src=".././blank_profile.png" alt="Profile Picture" class="profile-img">
+            </div>
+        </div>
+    </div>
+
+    <div id="mainDiv" class="content">
+        <h1>Welcome to TodoStack</h1>
+        <p>Start organizing your tasks with ease!</p>
+    </div>
+
+    <div id="settings-modal" class="settings-modal">
+        <div class="settings-modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Settings</h2>
+            <p>Adjust your preferences here:</p>
+            <div class="settings-options">
+                <!-- Example settings options -->
+                <label for="theme-select">Theme:</label>
+                <select id="theme-select">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                </select>
+                <br><br>
+                <label for="notifications">Enable Notifications:</label>
+                <input type="checkbox" id="notifications">
+            </div>
+        </div>
+    </div>
+    
+    <script src="src/dashboard.js"></script>
+</body>
+
+</html>
