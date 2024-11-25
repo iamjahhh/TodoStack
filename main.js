@@ -31,18 +31,6 @@ app.get('/dashboard', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
 });
 
-app.get('/tasks', (req, res) => {
-  const date = req.query.date;
-  const query = "SELECT * FROM tasks WHERE task_date = ?";
-  db.all(query, [date], (err, rows) => {
-      if (err) {
-          res.status(500).send(err.message);
-      } else {
-          res.json(rows);
-      }
-  });
-});
-
 app.post("/login", (req, res) => {
   performLogin(req, res);
 });
