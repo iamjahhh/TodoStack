@@ -1,138 +1,195 @@
 body {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Arial', sans-serif;
     background-color: #252525;
-    padding: 10px; 
+    padding: 0;
+    flex-direction: column;
 }
 
-#mainText {
-    color: rgb(255, 255, 255);
-    margin-bottom: 20px; 
+.branding {
     text-align: center;
-    display: none;
+    color: #fff;
+    padding: 20px;
+    margin-top: 30px;
 }
 
-#loginForm, #registerForm {
-    display: none; 
+.branding h1 {
+    font-size: 36px;
+    margin-bottom: -10px;
+    font-weight: 700;
+}
+
+.tagline {
+    font-size: 18px;
+    font-style: italic;
+    color: #ccc;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    background-color: #333;
+    border-radius: 10px;
     padding: 20px;
-    width: 100%; 
-    max-width: 300px;
-    border: 1px solid #000000;
-    border-radius: 8px;
-    background-color: rgb(49, 49, 49);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    z-index: 1;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
 }
 
 label {
     display: block;
-    width: 100%;
-    margin-bottom: 10px;
-    text-align: left;
-    font-size: 16px; 
-    color: white;
-    font-family: 'Helvetica Neue', sans-serif;
-    box-sizing: border-box;
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 5px;
+    font-weight: 600;
 }
 
 input {
-    display: block;
     width: 100%;
-    padding: 6px 15px; /* Add padding for more space inside */
-    margin-bottom: 10px; /* Increased bottom margin for spacing */
-    text-align: left;
-    font-size: 16px;
-    color: #333; /* Darker text color for better readability */
-    border: 1px solid #ccc; /* Soft border */
-    border-radius: 8px; /* Rounded corners */
-    background-color: #f8f8f8; /* Light grey background */
-    font-family: 'Helvetica Neue', sans-serif;
-    transition: all 0.3s ease; /* Smooth transition for hover and focus states */
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s;
     box-sizing: border-box;
 }
 
 input:focus {
-    outline: none; /* Remove default blue outline */
-    border-color: #3498db; /* Blue border color when focused */
-    background-color: #fff; /* White background when focused */
-    color: #333; /* Keep text color dark */
-    box-shadow: 0 0 8px rgba(52, 152, 219, 0.6); /* Soft blue glow around the input */
-}
-
-input:hover {
-    border-color: #3498db; /* Border turns blue on hover */
-    background-color: #e8f4fe; /* Light blue background on hover */
-}
-
-input:disabled {
-    background-color: #e0e0e0; /* Disabled state with a soft grey background */
-    border-color: #ccc; /* Grey border for disabled state */
-    color: #a0a0a0; /* Light grey text for disabled state */
+    outline: none;
+    border-color: #3498db;
+    background-color: #fff;
 }
 
 button {
     width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    cursor: pointer;
-    background-color: #252525;
-    color: white;
+    padding: 12px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #555;
     border: none;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-    font-family: 'Helvetica Neue', sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-sizing: border-box;
 }
 
 button:hover {
-    background-color: #666;
+    background-color: #444;
 }
 
-#responseMessage {
-    font-family: 'Helvetica Neue', sans-serif;
-    margin-top: 15px;
-    margin-bottom: 15%;
-    color: white;
+.switch {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+    color: #ccc;
+}
+
+.switch button {
+    background: none;
+    color: #3498db;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+    margin: 0;
     font-size: 14px;
 }
 
-@media (max-width: 768px) {
-    #loginForm, #registerForm {
-        padding: 15px;
+.switch button:hover {
+    color: #1c75bc;
+}
+
+.message {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #f00;
+}
+
+/* adjustments for screens 768px and above (skibidi desktop) */
+@media (min-width: 769px) {
+    .branding {
+        margin-top: 0px;
     }
 
-    label, input, button {
-        font-size: 14px;
+    .branding h1 {
+        font-size: 28px; /
+    }
+
+    .tagline {
+        font-size: 16px; 
+    }
+
+    .container {
+        max-width: 350px; 
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        margin-left: 10vw; 
+        margin-right: 10vw;
     }
 
     button {
-        padding: 8px;
+        padding: 10px;
+    }
+
+    input, button {
+        font-size: 14px;
+    }
+
+    .switch button {
+        font-size: 12px;
     }
 }
 
 @media (max-width: 480px) {
     body {
-        padding: 5px;
+        padding: 0 5vw;
     }
 
-    #mainText {
-        font-size: 18px;
+    .branding {
+        margin-top: -150px;
     }
 
-    #loginForm, #registerForm {
-        padding: 10px;
+    .container {
+        width: 100%;
+        margin-top: 50px;
+        padding: 15px;
     }
 
-    label, input, button {
-        font-size: 12px;
+    h1 {
+        font-size: 20px;
     }
 
-    button {
-        padding: 6px;
+    input, button {
+        font-size: 14px;
     }
+}
+
+.hidden {
+    display: none;
 }
