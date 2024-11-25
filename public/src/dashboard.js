@@ -130,56 +130,6 @@ window.onload = async () => {
     toggleTheme();
 });*/
 
-//modal
-
-const settingsLink = document.getElementById('settings-link');
-  const settingsModal = document.getElementById('settings-modal');
-  const closeBtn = document.querySelector('.close-btn');
-  const themeSelect = document.getElementById('theme-select');
-  const notificationsCheckbox = document.getElementById('notifications');
-
-  // Function to open the settings modal
-  settingsLink.addEventListener('click', function(e) {
-    e.preventDefault(); // Prevent default action (e.g., link navigation)
-    settingsModal.style.display = 'block'; // Show the modal
-  });
-
-  // Close the settings modal
-  closeBtn.addEventListener('click', function() {
-    settingsModal.style.display = 'none'; // Hide the modal
-  });
-
-  // Close the modal if the user clicks outside of it
-  window.addEventListener('click', function(e) {
-    if (e.target === settingsModal) {
-      settingsModal.style.display = 'none'; // Hide the modal if clicked outside
-    }
-  });
-
-  // Listen for theme change and apply it
-  themeSelect.addEventListener('change', function() {
-    const selectedTheme = themeSelect.value;
-    document.body.classList.remove('dark-mode', 'light-mode');
-    document.body.classList.add(selectedTheme + '-mode');
-    localStorage.setItem('theme', selectedTheme); // Save to localStorage for persistence
-  });
-
-  // Load saved theme from localStorage on page load
-  const savedTheme = localStorage.getItem('theme') || 'light';
-  document.body.classList.add(savedTheme + '-mode');
-  themeSelect.value = savedTheme;
-
-  // Optional: Listen for notifications toggle
-  notificationsCheckbox.addEventListener('change', function() {
-    if (notificationsCheckbox.checked) {
-      console.log('Notifications enabled');
-    } else {
-      console.log('Notifications disabled');
-    }
-  });
-  
-  //modal end
-
 document.getElementById('home').addEventListener('click', (event) => {
     event.preventDefault();
     window.location.href = '/dashboard';
