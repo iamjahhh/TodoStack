@@ -1,87 +1,3 @@
-/*const icon = document.getElementById('mode');
-
-function toggleTheme() {
-    const body = document.getElementsByTagName("body")[0];
-    const menuBar = document.getElementsByClassName("menu-bar")[0];
-    const menuLinks = document.querySelectorAll(".menu-bar a");
-    const profileName = document.querySelectorAll(".profile .user-name");
-    const content = document.querySelector(".content");
-
-    if (localStorage.getItem('theme') === 'dark') {
-        // Dark mode
-        body.style.backgroundColor = "#252525";
-        body.style.color = "white"; // Text color for dark mode
-
-        // Menu bar styles for dark mode
-        menuBar.style.backgroundColor = "#444444";
-        menuLinks.forEach(link => {
-            link.style.color = "white"; // Menu links text color for dark mode
-            link.style.transition = "background-color 0.3s ease";
-        });
-
-        // Menu bar hover effect for dark mode
-        menuLinks.forEach(link => {
-            link.addEventListener("mouseover", () => {
-                link.style.backgroundColor = "#343434"; // Darker background on hover
-            });
-            link.addEventListener("mouseout", () => {
-                link.style.backgroundColor = ""; // Reset background when not hovered
-            });
-        });
-
-        // Profile section for dark mode
-        profileName.forEach(name => {
-            name.style.color = "white"; // Profile name color
-        });
-
-        // Content section for dark mode
-        content.style.color = "white"; // Text color for content in dark mode
-
-        // Scrollbar for dark mode
-        document.documentElement.style.scrollbarColor = "#555 #222"; // Dark theme scrollbar
-        document.documentElement.style.scrollbarWidth = "thin";
-
-        console.log("SWITCHED TO DARK");
-        localStorage.setItem('theme', 'dark');
-    } else {
-        // Light mode
-        body.style.backgroundColor = "#FFFFFF";
-        body.style.color = "black"; // Text color for light mode
-
-        // Menu bar styles for light mode
-        menuBar.style.backgroundColor = "#f1f1f1";
-        menuLinks.forEach(link => {
-            link.style.color = "black"; // Menu links text color for light mode
-            link.style.transition = "background-color 0.3s ease";
-        });
-
-        // Menu bar hover effect for light mode
-        menuLinks.forEach(link => {
-            link.addEventListener("mouseover", () => {
-                link.style.backgroundColor = "#e2e2e2"; // Light background on hover
-            });
-            link.addEventListener("mouseout", () => {
-                link.style.backgroundColor = ""; // Reset background when not hovered
-            });
-        });
-
-        // Profile section for light mode
-        profileName.forEach(name => {
-            name.style.color = "black"; // Profile name color
-        });
-
-        // Content section for light mode
-        content.style.color = "black"; // Text color for content in light mode
-
-        // Scrollbar for light mode
-        document.documentElement.style.scrollbarColor = "#888 #ccc"; // Light theme scrollbar
-        document.documentElement.style.scrollbarWidth = "thin";
-
-        console.log("SWITCHED TO LIGHT");
-        localStorage.setItem('theme', 'light');
-    }
-}*/
-
 window.onload = async () => {
     await fetch("/check-login", {
         method: "POST",
@@ -98,37 +14,68 @@ window.onload = async () => {
 
             document.getElementsByTagName("body")[0].style.display = "flex";
             document.getElementsByClassName("user-name")[0].textContent = data.message;
-
-           /* if (localStorage.getItem('theme') === 'dark') {
-                if (icon.classList.contains("fa-sun")) icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            } else {
-                if (icon.classList.contains("fa-moon")) icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            }
-
-            toggleTheme();*/
         })
         .catch((error) => {
             console.log(error);
         });
 };
 
-/*icon.addEventListener('click', (event) => {
-    event.preventDefault();
+// calendar start
 
-    if (localStorage.getItem('theme') === 'dark') {
-        if (icon.classList.contains("fa-moon")) icon.classList.remove('fa-moon');
-        localStorage.setItem('theme', 'light');
-        icon.classList.add('fa-sun');
-    } else {
-        if (icon.classList.contains("fa-sun")) icon.classList.remove('fa-sun');
-        localStorage.setItem('theme', 'dark');
-        icon.classList.add('fa-moon');
+document.addEventListener('DOMContentLoaded', function () {
+    const calendarEl = document.getElementById('calendar');
+    const currentMonthEl = document.getElementById('current-month');
+    const prevMonthBtn = document.getElementById('prev-month');
+    const nextMonthBtn = document.getElementById('next-month');
+
+    let currentDate = new Date();
+
+    function renderCalendar(date) {
+        const month = date.getMonth();
+        const year = date.getFullYear();
+
+        currentMonthEl.textContent = date.toLocaleString('default', { month: 'long', year: 'numeric' });
+
+        const firstDayOfMonth = new Date(year, month, 1);
+        const lastDayOfMonth = new Date(year, month + 1, 0);
+
+        const firstDayWeekday = firstDayOfMonth.getDay(); // 0 - sunday, 6 - saturday
+        const totalDaysInMonth = lastDayOfMonth.getDate();
+
+        calendarEl.innerHTML = '';
+
+        for (let i = 0; i < firstDayWeekday; i++) {
+            calendarEl.appendChild(document.createElement('div'));
+        }
+
+        for (let i = 1; i <= totalDaysInMonth; i++) {
+            const dayEl = document.createElement('div');
+            dayEl.textContent = i;
+            dayEl.addEventListener('click', function () {
+                const selectedDay = document.querySelector('.selected-day');
+                if (selectedDay) selectedDay.classList.remove('selected-day');
+                dayEl.classList.add('selected-day');
+                console.log('Selected date:', `${month + 1}-${i}-${year}`);
+            });
+
+            calendarEl.appendChild(dayEl);
+        }
     }
 
-    toggleTheme();
-});*/
+    renderCalendar(currentDate);
+
+    prevMonthBtn.addEventListener('click', function () {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        renderCalendar(currentDate);
+    });
+
+    nextMonthBtn.addEventListener('click', function () {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar(currentDate);
+    });
+});
+
+// calendar end
 
 document.getElementById('home').addEventListener('click', (event) => {
     event.preventDefault();

@@ -4,7 +4,7 @@
 <head>
     <link rel="stylesheet" href="styles/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
     <meta charset="UTF-8">
 
@@ -20,17 +20,21 @@
         <div class="menu-right">
             <a href="#settings" id="settings-link"><i class="fas fa-cogs"></i></a>
             <!-- <a href="#mode" id="mode" ><i class="fa-solid fa-moon"></i></a> -->
-            <a href="#" id="logout-link"><i class="fas fa-right-from-bracket"></i></a> 
+            <a href="#" id="logout-link"><i class="fas fa-right-from-bracket"></i></a>
             <div class="profile">
-                <span class="user-name">John Doe</span> 
+                <span class="user-name">John Doe</span>
                 <img src=".././blank_profile.png" alt="Profile Picture" class="profile-img">
             </div>
         </div>
     </div>
 
-    <div id="mainDiv" class="content">
-        <h1>Welcome to TodoStack</h1>
-        <p>Start organizing your tasks with ease!</p>
+    <div id="calendar-container">
+        <div id="calendar-header">
+            <button id="prev-month">&lt;</button>
+            <span id="current-month">November 2024</span>
+            <button id="next-month">&gt;</button>
+        </div>
+        <div id="calendar"></div>
     </div>
     
     <script src="src/dashboard.js"></script>
